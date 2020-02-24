@@ -1,0 +1,75 @@
+.home-wrap {
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        font-size: 24px;
+    }
+    .hd-right-box {
+        display: inline-block;
+        float: right;
+        .volumn-box {
+            display: inline-block;
+        }
+    }
+    .task-pane-wrap {
+        display: inline-block;
+        width: calc(100% - 320px);
+        .todo-card {
+            margin-right: 26px;
+            margin-bottom: 26px;
+            width: 400px;
+            min-height: 300px;
+            vertical-align: top;
+            .todo-desc {
+                
+            }
+            .todo-status {
+                margin-top: 20px;
+                padding-top: 10px;
+                border-top: 1px dashed #ccc;
+            }
+        }
+        .add-todo-btn {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            border: 1px dashed transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            text-align: center;
+            vertical-align: top;
+            color: rgba(0,0,0, .3);
+            cursor: pointer;
+            &:hover {
+                border-color: rgb(90, 169, 248);
+            }
+        }
+    }
+    .task-status-list {
+        float: right;
+        width: 300px;
+        .status-list-item {
+            height: 36px;
+        }
+    }
+    .todo-form {
+        width: 80%;
+        margin: 20px auto;
+        .form-control {
+            padding: 0 0 16px;
+            display: flex;
+            .label {
+                display: inline-block;
+                width: 100px;
+            }
+            .todo-ipt, .todo-select {
+                flex: 1;
+            }
+            .todo-select {
+                height: 40px;
+            }
+        }
+    }
+}

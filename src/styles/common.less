@@ -1,0 +1,84 @@
+/* 初始化样式 */
+body,html{
+	margin: 0;
+	height: 100%;
+	font-family: "Helvetica Neue","Arial"
+}
+
+html {
+	font-size: 1366/1920 *100Px;
+	// @media screen and (min-width: 1366px) {
+	// 	font-size: 1366/1920 *100Px;
+	// }
+
+	@media screen and (min-width: 1440px) {
+		font-size: 144/192 *100Px;
+	}
+
+	@media screen and (min-width: 1920px) {
+		font-size: 100Px;
+	}
+}
+
+body {
+	font-size: 14px;
+	background-color: #f0f2f5;
+}
+
+ul {
+	padding-left: 0;
+	margin: 0;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+p {
+	margin: 0;
+}
+
+a:focus {
+	text-decoration: none;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+#root {
+	height: 100%;
+}
+
+/******** 通用布局 *********/
+
+/* 浮动 */
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.tc {
+	text-align: center;
+}
+
+/* 清除浮动 */
+.clearfix {
+    &::after, &::before {
+        content: '';
+        display: table;
+    }
+    &::after {
+        clear: both;
+        overflow: hidden;
+    }
+    zoom: 1;
+}
