@@ -20,7 +20,6 @@ import { createTodo, editTodo, doneTodo, deleteTodo, failTodo } from 'store/acti
 import { formatBt } from 'utils/tool'
 
 import './index.less'
-import 'styles/common.less'
 
 const { Header, Content, Footer } = Layout
 const { Textarea } = Input
@@ -70,7 +69,7 @@ class Home extends Component {
 
     data = {
       type: ['error', 'warning', 'processing', 'success'],
-      typeText: ['每天', '周次', '月次', '季度'],
+      typeText: ['每天', '周次', '月次', '季度'], 
       todo: {}
     }
 
