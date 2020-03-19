@@ -1,4 +1,4 @@
-.home-wrap {
+.upload-wrap {
     .logo {
         display: inline-flex;
         align-items: center;
@@ -12,13 +12,45 @@
         }
     }
     .imgBox {
-        width: 300px;
+        position: relative;
+        width: 360px;
+        max-height: 300px;
         padding: 20px;
         display: inline-block;
         margin: 10px;
         box-shadow: 0 0 20px rgba(0,0,0, .1);
+        overflow: hidden;
         img {
             width: 100%;
+        }
+        .del-btn {
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            display: none;
+            cursor: pointer;
+            color: red;
+        }
+        &:hover {
+            .del-btn {
+                display: inline-block;
+            }
+        }
+    }
+    .upload-btn {
+        width: 200px;
+        height: 200px;
+        display: inline-flex;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        justify-content: center;
+        font-size: 100px;
+        line-height: 200px;
+        vertical-align: 60px;
+        cursor: pointer;
+        color: #ccc;
+        span {
+            outline: none;
         }
     }
 }

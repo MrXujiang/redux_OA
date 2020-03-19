@@ -1,25 +1,16 @@
 import React, { Component } from 'react'
-import { 
-  Alert, 
-  Button, 
+import {  
   Notification,
   message,
   Layout, 
-  Icon, 
-  Badge,
-  Card,
-  Progress,
-  Modal,
-  Input,
-  Spin,
-  Empty
+  Icon
 } from '@alex_xu/xui'
 import { Upload } from 'antd'
 
 import './index.less'
 const { Header, Content, Footer } = Layout
 
-const apiUrl = 'http://localhost:3001/api/v0/upload'
+const apiUrl = 'http://localhost:3001/api/v0'
 
 class UploadPage extends Component {
     state = {
@@ -27,7 +18,11 @@ class UploadPage extends Component {
     }
 
     componentDidMount() {
-      
+      fetch(apiUrl + '/files').then(res => res.json()).then(res => {
+        this.setState({
+          fileList: res.result
+        })
+      })
     }
 
     onChange = (info) => {
@@ -58,8 +53,23 @@ class UploadPage extends Component {
       Notification.pop({
         type: 'success',
         message: '图片地址',
-        duration: 0,
+        duration: 10,
         description: item
+      })
+    }
+
+    delFile = (item, e) => {
+      e.stopPropagation()
+      fetch(apiUrl + '/del?id=' + item.split('/uploads/')[1]).then(res => res.json()).then(res => {
+        message.pop({
+          type: 'success',
+          content: res.result
+        })
+        this.setState(prev => {
+          return {
+            fileList: prev.fileList.filter(v => v !== item)
+          }
+        })
       })
     }
 
@@ -67,34 +77,36 @@ class UploadPage extends Component {
     render() {
       const props = {
         name: 'file',
-        action: apiUrl,
+        action: apiUrl + '/upload',
+        listType: 'picture-card',
         multiple: true,
+        showUploadList: false,
         headers: {
           authorization: 'authorization-text'
         }
       };
       return (
-        <div className="home-wrap">
+        <div className="upload-wrap">
           <Layout>
             <Header fixed>
               <div className="logo"><Icon type="FaBattleNet" style={{fontSize: '30px', marginRight: '12px'}} />XOSS</div>
             </Header>
             <Content style={{marginTop: '48px', backgroundColor: '#f0f2f5'}}>
-              <Upload 
-                {...props} 
-                onChange={this.onChange}
-              >
-                <Button>
-                  Click to Upload
-                </Button>
-              </Upload>
               {
                 this.state.fileList.map((item, i) => {
                   return <div key={i} className="imgBox" onClick={this.showAddress.bind(this, item)}>
                     <img src={item} alt=""/>
+                    <span className="del-btn" onClick={this.delFile.bind(this, item)}><Icon type="FaMinusCircle" style={{fontSize: '24px'}} /></span>
                   </div>
                 })
               }
+              <Upload 
+                {...props} 
+                className="upload-btn"
+                onChange={this.onChange}
+              >
+                +
+              </Upload>
             </Content>
             <Footer style={{color: 'rgba(0,0,0, .5)'}}>趣谈前端 -- 徐小夕</Footer>
           </Layout>
