@@ -10,7 +10,7 @@ import { Upload } from 'antd'
 import './index.less'
 const { Header, Content, Footer } = Layout
 
-const apiUrl = 'http://localhost:3001/api/v0'
+const apiUrl = process.env.NODE_ENV === 'dev' ? 'http://localhost:3001/api/v0' : 'http://139.224.102.110:3001/api/v0'
 
 class UploadPage extends Component {
     state = {

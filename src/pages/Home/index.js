@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import { 
-  Alert, 
-  Button, 
-  xNotification,
   message,
   Layout, 
   Icon, 
